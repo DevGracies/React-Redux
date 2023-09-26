@@ -1,5 +1,40 @@
 {
-  "posts": [{ "id": 1, "title": "json-server", "author": "typicode" }],
-  "comments": [{ "id": 1, "body": "some comment", "postId": 1 }],
-  "profile": { "name": "typicode" }
+  "posts": [
+    {
+      "id": 1,
+      "username": "John Doe",
+      "email": "jonndow@gmail.com",
+      "password": "123344"
+    },
+    {
+      "username": "Mary Waters",
+      "email": "marywaters@gmail.com",
+      "password": "mary234",
+      "id": 2
+    },
+    {
+      "username": "David Willams",
+      "email": "davidwillams@gmail.com",
+      "password": "mary234",
+      "id": 3
+    },
+    {
+      "username": "Ademide Johnson",
+      "email": "johnsonade@gmail.com",
+      "password": "mide994",
+      "id": 4
+    },
+    {
+      "username": "Grace Sean",
+      "email": "gracesean@gmail.com",
+      "password": "@gracesean",
+      "id": 5
+    },
+    {
+      "username": "Grace Sean",
+      "email": "gracesean@gmail.com",
+      "password": "@gracesean",
+      "id": 6
+    }
+  ]
 }

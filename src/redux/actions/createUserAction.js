@@ -4,9 +4,15 @@ import {
   CREATE_USER_RESET,
   CREATE_USER_ERROR,
 } from "../constants";
+import {
+  GET_USERS_ERROR,
+  GET_USERS_REQUEST,
+  GET_USERS_RESET,
+  GET_USERS_SUCCESS,
+} from "../constants";
 import axios from "axios";
 const backend_base_url = "http://localhost:3004/posts";
-export const createUserAction = (BodyData) => async (dispatch, state) => {
+export const createUserAction = (posts) => async (dispatch, state) => {
   try {
     console.log(dispatch, "dispatch");
     dispatch({
@@ -15,19 +21,38 @@ export const createUserAction = (BodyData) => async (dispatch, state) => {
 
     // throw new Error("An error occured")
     //make a call
-    const { data } = await axios.post(`${backend_base_url}/users`, {
-      BodyData,
+    const { data } = await axios.post(backend_base_url, {
+      ...posts,
     });
     console.log(data, "data");
     //if we get here, then request is a sucess case
     dispatch({
       type: CREATE_USER_SUCCESS,
-      payload: data.BodyData,
+      payload: data,
     });
   } catch (error) {
     console.log(error.message, "error");
     dispatch({
       type: CREATE_USER_ERROR,
+      payload: error.message,
+    });
+  }
+};
+export const getUserAction = (posts) => async (dispatch, state) => {
+  try {
+    dispatch({
+      type: GET_USERS_REQUEST,
+    });
+    const { data } = await axios.get(backend_base_url, { ...posts });
+    dispatch({
+      type: GET_USERS_SUCCESS,
+      payload: data,
+    });
+    return data;
+  } catch (error) {
+    console.log(error.message, "error");
+    dispatch({
+      type: GET_USERS_ERROR,
       payload: error.message,
     });
   }

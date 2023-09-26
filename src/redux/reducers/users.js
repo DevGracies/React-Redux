@@ -5,6 +5,13 @@ import {
   CREATE_USER_SUCCESS,
 } from "../constants";
 
+import {
+  GET_USERS_ERROR,
+  GET_USERS_REQUEST,
+  GET_USERS_RESET,
+  GET_USERS_SUCCESS,
+} from "../constants";
+
 export const createUseReducer = (
   state = { user: null, loading: false, success: false, error: null },
   action
@@ -40,6 +47,39 @@ export const createUseReducer = (
   }
 };
 
-export const GetUserReducer = (state = {}, action) => {};
+export const GetUserReducer = (
+  state = { users: null, loading: false, success: false, error: null },
+  action
+) => {
+  switch (action.type) {
+    case GET_USERS_REQUEST:
+      return {
+        ...state,
+        loading: true,
+      };
+    case GET_USERS_SUCCESS:
+      return {
+        ...state,
+        success: true,
+        users: action.payload,
+      };
+    case GET_USERS_RESET:
+      return {
+        loading: false,
+        success: false,
+        users: null,
+        error: null,
+      };
+    case GET_USERS_ERROR:
+      return {
+        ...state,
+        loading: false,
+        success: false,
+        error: action.payload,
+      };
+    default:
+      return state;
+  }
+};
 export const GetAllUserReducer = (state = {}, action) => {};
 export const DeleteUserReducer = (state = {}, action) => {};

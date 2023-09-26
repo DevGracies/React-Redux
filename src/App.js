@@ -1,8 +1,9 @@
 import "./App.css";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import buyCakeAction from "./redux/actions/buyCakeAction";
-import createUserAction from "./redux/actions/createUserAction";
+import { buyCakeAction } from "./redux/actions/buyCakeAction";
+import { createUserAction } from "./redux/actions/createUserAction";
+import { getUserAction } from "./redux/actions/createUserAction";
 import { CREATE_USER_RESET } from "./redux/constants";
 
 function App() {
@@ -24,7 +25,7 @@ function App() {
 
       <div style={{ margin: "100px 0" }}>
         {loading && <h2>loading.....</h2>}
-        {error && <h2 style={{ color: "brown" }}>Error:{error}</h2>}
+        {error && <h2 style={{ color: "blue" }}>Error:{error}</h2>}
         {user && (
           <>
             <p> Username:{user.username} </p>
@@ -36,15 +37,26 @@ function App() {
           onClick={() =>
             dispatch(
               createUserAction({
-                username: "John Doe",
-                email: "johnDoe@gmail.com",
-                password: "12345",
+                username: "Grace Sean",
+                email: "gracesean@gmail.com",
+                password: "@gracesean",
               })
             )
           }
         >
           Create User
         </button>
+        <h2>Admin DashBoard</h2>
+        <button onClick={() => getUserAction()}>Show all users</button>
+        {loading && <h2>Loading....</h2>}
+        {error && <h2 style={{ color: "red" }}>Error: {error}</h2>}
+        {user && (
+          <>
+            <p> Username: {user.username} </p>
+            <p>Email: {user.email} </p>
+            <p>Password: {user.password} </p>
+          </>
+        )}
       </div>
     </div>
   );

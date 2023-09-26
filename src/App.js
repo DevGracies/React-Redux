@@ -9,10 +9,11 @@ import { CREATE_USER_RESET } from "./redux/constants";
 function App() {
   const dispatch = useDispatch();
   //subscribe to store
-  const { cakes, createUser } = useSelector((state) => state);
+  const { cakes, createUser, userReducer } = useSelector((state) => state);
   const { remainingItem, sold, numOfCakes } = cakes;
 
   const { loading, sucess: createUserSuccess, user, error } = createUser;
+  const { loadings, users, errors } = userReducer;
   const [qty, setQty] = useState(1);
   return (
     <div className="App">
@@ -47,16 +48,18 @@ function App() {
           Create User
         </button>
         <h2>Admin DashBoard</h2>
-        <button onClick={() => getUserAction()}>Show all users</button>
-        {loading && <h2>Loading....</h2>}
-        {error && <h2 style={{ color: "red" }}>Error: {error}</h2>}
-        {user && (
-          <>
-            <p> Username: {user.username} </p>
-            <p>Email: {user.email} </p>
-            <p>Password: {user.password} </p>
-          </>
-        )}
+        <button onClick={() => dispatch(getUserAction())}>
+          Show all users
+        </button>
+        {loadings && <h2>Loading....</h2>}
+        {errors && <h2 style={{ color: "red" }}>Error: {error}</h2>}
+        {users.map((user) => (
+          <ul key={user.id}>
+            <li> Username: {user.username} </li>
+            <li>Email: {user.email} </li>
+            <li>Password: {user.password} </li>
+          </ul>
+        ))}
       </div>
     </div>
   );

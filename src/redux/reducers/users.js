@@ -48,14 +48,14 @@ export const createUseReducer = (
 };
 
 export const GetUserReducer = (
-  state = { users: null, loading: false, success: false, error: null },
+  state = { users: [], loadings: false, success: false, errors: null },
   action
 ) => {
   switch (action.type) {
     case GET_USERS_REQUEST:
       return {
         ...state,
-        loading: true,
+        loadings: true,
       };
     case GET_USERS_SUCCESS:
       return {
@@ -65,17 +65,17 @@ export const GetUserReducer = (
       };
     case GET_USERS_RESET:
       return {
-        loading: false,
+        loadings: false,
         success: false,
         users: null,
-        error: null,
+        errors: null,
       };
     case GET_USERS_ERROR:
       return {
         ...state,
-        loading: false,
+        loadings: false,
         success: false,
-        error: action.payload,
+        errors: action.payload,
       };
     default:
       return state;

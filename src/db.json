@@ -35,6 +35,12 @@
       "email": "gracesean@gmail.com",
       "password": "@gracesean",
       "id": 6
+    },
+    {
+      "username": "lora Sean",
+      "email": "lorasean@gmail.com",
+      "password": "@lorasean",
+      "id": 7
     }
   ]
 }

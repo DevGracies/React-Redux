@@ -38,9 +38,9 @@ function App() {
           onClick={() =>
             dispatch(
               createUserAction({
-                username: "Grace Sean",
-                email: "gracesean@gmail.com",
-                password: "@gracesean",
+                username: "lora Sean",
+                email: "lorasean@gmail.com",
+                password: "@lorasean",
               })
             )
           }
@@ -54,11 +54,11 @@ function App() {
         {loadings && <h2>Loading....</h2>}
         {errors && <h2 style={{ color: "red" }}>Error: {error}</h2>}
         {users.map((user) => (
-          <ul key={user.id}>
+          <ol key={user.id}>
             <li> Username: {user.username} </li>
             <li>Email: {user.email} </li>
             <li>Password: {user.password} </li>
-          </ul>
+          </ol>
         ))}
       </div>
     </div>

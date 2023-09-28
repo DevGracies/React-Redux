@@ -5,19 +5,20 @@ import { buyCakeAction } from "./redux/actions/buyCakeAction";
 import { createUserAction } from "./redux/actions/createUserAction";
 import { getUserAction } from "./redux/actions/createUserAction";
 import { CREATE_USER_RESET } from "./redux/constants";
+import Routers from "./Routers";
 
 function App() {
-  const dispatch = useDispatch();
-  //subscribe to store
-  const { cakes, createUser, userReducer } = useSelector((state) => state);
-  const { remainingItem, sold, numOfCakes } = cakes;
+  // const dispatch = useDispatch();
+  // //subscribe to store
+  // const { cakes, createUser, userReducer } = useSelector((state) => state);
+  // const { remainingItem, sold, numOfCakes } = cakes;
 
-  const { loading, sucess: createUserSuccess, user, error } = createUser;
-  const { loadings, users, errors } = userReducer;
-  const [qty, setQty] = useState(1);
+  // const { loading, sucess: createUserSuccess, user, error } = createUser;
+  // const { loadings, users, errors } = userReducer;
+  // const [qty, setQty] = useState(1);
   return (
     <div className="App">
-      <h2>Buy Car</h2>
+      {/* <h2>Buy Car</h2>
       <p>Total item:{numOfCakes} </p>
       <p>Remaining Items:{remainingItem} </p>
       <p>Sold: {sold} </p>
@@ -60,7 +61,8 @@ function App() {
             <li>Password: {user.password} </li>
           </ol>
         ))}
-      </div>
+      </div> */}
+      <Routers />
     </div>
   );
 }

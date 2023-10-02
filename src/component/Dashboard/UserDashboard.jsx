@@ -1,6 +1,7 @@
 import React from "react";
 import Note from "../Note/Note";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 const Top = styled.section`
   border-radius: 30px;
@@ -18,6 +19,7 @@ function UserDashboard() {
         <h1>NOTES</h1>
         <Note />
       </Top>
+      {/* <Link to="/" onClick={() => setColour("#ff5102")} /> */}
     </div>
   );
 }

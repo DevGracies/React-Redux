@@ -26,6 +26,7 @@ export const createUseReducer = (
       return {
         ...state,
         success: true,
+        loading: false,
         user: action.payload,
       };
     case CREATE_USER_RESET:

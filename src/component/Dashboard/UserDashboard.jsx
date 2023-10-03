@@ -11,7 +11,6 @@ const Top = styled.section`
   align-items: center;
   width: 390px;
   dispaly: flex;
-  margin-left: 300px;
   border-radius: 20px;
   justify-content: space-between;
   color: #000;

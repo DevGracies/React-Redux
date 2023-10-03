@@ -14,33 +14,57 @@ const Note = styled.button`
 const Fold = styled.div`
   background-color: #ffff;
   border-radius: 15px;
-  width: 500px;
-  position: absolute;
-  height: 600px;
-  backdrop-blur: blur(16px);
+  width: 80vh;
+  height: 70vh;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 `;
 const Task = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
 `;
+const Overall = styled.div`
+  width: 100%;
+  top: 0;
+  buttom: 0;
+  left: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+
+  backdrop-filter: blur(10px);
+`;
+
 const NewNote = () => {
   const [note, setNote] = useState();
   return (
     <div>
       <Note onClick={() => setNote(!note)}>note</Note>
       {note && (
-        <Fold>
-          <Task>
-            <h2>New Task</h2>
-            <h2>&times;</h2>
-          </Task>
-          <label>Title</label>
-          <input type="text" placeholder="Task title" />
-          <label>Text</label>
+        <Overall>
+          <Fold>
+            <Task>
+              <h2>New Task</h2>
+              <button
+                onClick={() => setNote(false)}
+                style={{
+                  fontSize: "50px",
+                  font: "bold",
+                  cursor: "pointer",
+                }}
+              >
+                &times;
+              </button>
+            </Task>
+            <label>Title</label>
+            <input type="text" placeholder="Task title" />
+            <label>Text</label>
 
-          <button>Create</button>
-        </Fold>
+            <button>Create</button>
+          </Fold>
+        </Overall>
       )}
     </div>
   );

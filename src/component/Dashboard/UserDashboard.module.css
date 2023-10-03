@@ -1,0 +1,21 @@
+.dashboard{
+    background-color: #ffdccc; 
+    width: 100%; 
+    height: 900px; 
+}
+
+.note{
+    background-color:  #ff5102;
+    color: #ffff;
+    border: none;
+    border-radius: 3px;
+    width: 90px;
+    height: 50px;
+}
+/* .top{
+    background-color: #fff;
+    height: 40px;
+    dispaly: flex;
+    gap: 0px;
+    color: #000;
+} */

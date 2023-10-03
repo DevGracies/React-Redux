@@ -4,14 +4,15 @@ import { Link, Route, Routes } from "react-router-dom";
 import Join from "./component/Join/Join";
 
 const Routers = () => {
-  const [colour, setColour] = useState("#ffff");
+  // const [colour, setColour] = useState("#ffff");
   return (
-    <div style={{ background: colour }}>
-      <Link to="/" onClick={() => setColour("#ff5102")} />
+    <div>
+      {/* style={{ background: colour }} */}
+      {/* <Link to="/" onClick={() => setColour("#ff5102")} /> */}
       <Routes>
         <Route
           path="/"
-          onClick={() => setColour("#ff5102")}
+          // onClick={() => setColour("#ff5102")}
           element={<LoginPage />}
         />
         <Route path="/join" element={<Join />} />

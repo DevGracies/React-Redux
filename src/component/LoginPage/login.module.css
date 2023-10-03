@@ -12,6 +12,8 @@
     width: 400px;
     text-align: left;
     border-radius: 15px;
+    justify-content: center;
+    align-items: center;
     padding: 40px;
 }
 
@@ -27,6 +29,9 @@
     margin-top: 5px;
     border-radius: 5px;
     margin-bottom: 40px;
+}
+.input:focus{
+    outline: none;
 }
 .button{
     width: 390px;

@@ -5,12 +5,25 @@ import { Link } from "react-router-dom";
 import style from "./UserDashboard.module.css";
 import NewNote from "../NewNote/NewNote";
 
+const Top = styled.section`
+  background-color: #fff;
+  height: 120px;
+  align-items: center;
+  width: 390px;
+  dispaly: flex;
+  margin-left: 300px;
+  border-radius: 20px;
+  justify-content: space-between;
+  color: #000;
+`;
 function UserDashboard() {
   return (
     <div className={style.dashboard}>
-      <div className={style.top}>
-        <NewNote />
-        <h2>Username</h2>
+      <div>
+        <Top>
+          <NewNote />
+          <h2>Username</h2>
+        </Top>
       </div>
       <div>
         <h1>NOTES</h1>

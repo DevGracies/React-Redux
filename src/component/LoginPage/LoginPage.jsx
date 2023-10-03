@@ -8,7 +8,9 @@ import { Link } from "react-router-dom";
 const WelcomeForm = styled.form`
   justify-content: center;
   display: flex;
+  align-items: center;
   width: 100%;
+  height: 100%;
 `;
 
 function LoginPage() {

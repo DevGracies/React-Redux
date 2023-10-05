@@ -11,7 +11,7 @@ const Top = styled.section`
 function Header() {
   return (
     <Top>
-      <h2 className={style.note}>Note</h2>
+      <h2 className={style.note}>Journal</h2>
       <div>
         <button className={style.account}>Logout</button>
         <button className={style.account}>Delete Account</button>

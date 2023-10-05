@@ -5,7 +5,7 @@ import { reducers } from "./combineReducer";
 const middleware = [thunk];
 
 const setMiddleware =
-  process.env.NODE === "development"
+  process.env.NODE_ENV === "development"
     ? composeWithDevTools(applyMiddleware(...middleware))
     : applyMiddleware(...middleware);
 export const store = createStore(reducers, setMiddleware);

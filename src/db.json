@@ -1,64 +1,19 @@
 {
   "posts": [
     {
-      "id": 1,
-      "username": "John Doe",
-      "email": "jonndow@gmail.com",
-      "password": "123344"
+      "email": "graceadegunle16@gmail.com",
+      "password": "Gra345",
+      "id": 1
     },
     {
-      "username": "Mary Waters",
-      "email": "marywaters@gmail.com",
-      "password": "mary234",
+      "email": "degracies04@gmail.com",
+      "password": "loveth",
       "id": 2
     },
     {
-      "username": "David Willams",
-      "email": "davidwillams@gmail.com",
-      "password": "mary234",
+      "email": "youngdeveloperstraining@gmail.com",
+      "password": "jnvfzn",
       "id": 3
-    },
-    {
-      "username": "Ademide Johnson",
-      "email": "johnsonade@gmail.com",
-      "password": "mide994",
-      "id": 4
-    },
-    {
-      "username": "Grace Sean",
-      "email": "gracesean@gmail.com",
-      "password": "@gracesean",
-      "id": 5
-    },
-    {
-      "username": "lora Sean",
-      "email": "lorasean@gmail.com",
-      "password": "@lorasean",
-      "id": 6
-    },
-    {
-      "username": "lora Sean",
-      "email": "lorasean@gmail.com",
-      "password": "@lorasean",
-      "id": 7
-    },
-    {
-      "username": "lora Sean",
-      "email": "lorasean@gmail.com",
-      "password": "@lorasean",
-      "id": 8
-    },
-    {
-      "username": "lora Sean",
-      "email": "lorasean@gmail.com",
-      "password": "@lorasean",
-      "id": 9
-    },
-    {
-      "username": "lora Sean",
-      "email": "lorasean@gmail.com",
-      "password": "@lorasean",
-      "id": 10
     }
   ],
   "newTask": []

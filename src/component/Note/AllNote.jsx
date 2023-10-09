@@ -144,7 +144,7 @@ const AllNote = () => {
                         Edit Journal
                       </Button>
                       <Button onClick={() => deleteHandler(note.id)}>
-                        Delete Journal
+                        Delete Journal 
                       </Button>
                     </div>
                   </div>

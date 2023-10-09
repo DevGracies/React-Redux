@@ -8,7 +8,6 @@ const useAuth = () => {
 
 const ProtectedRouters = () => {
   const isAuth = useAuth();
-
   return isAuth ? <Outlet /> : <Navigate to="/" />;
 };
 

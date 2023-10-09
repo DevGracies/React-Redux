@@ -1,7 +1,7 @@
 import React from "react";
-import Header from "../Header/Header";
-import Footer from "../Footer/Footer";
-import UserDashboard from "../Dashboard/UserDashboard";
+import Header from "../component/Header/Header";
+import Footer from "../component/Footer/Footer";
+import UserDashboard from "../component/Dashboard/UserDashboard";
 
 const Join = () => {
   return (

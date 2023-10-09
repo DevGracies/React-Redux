@@ -61,6 +61,7 @@ export const GetUserReducer = (
     case GET_USERS_SUCCESS:
       return {
         ...state,
+        loadings: false,
         success: true,
         users: action.payload,
       };

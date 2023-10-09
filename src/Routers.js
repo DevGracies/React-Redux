@@ -16,9 +16,9 @@ const Routers = () => {
           // onClick={() => setColour("#ff5102")}
           element={<LoginPage />}
         />
-        <Route element={<ProtectedRouters />}>
           <Route path="/join" element={<Join />} />
-        </Route>
+        {/* <Route element={<ProtectedRouters />}>
+        </Route> */}
       </Routes>
     </div>
   );

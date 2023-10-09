@@ -65,45 +65,14 @@ const Overall = styled.div`
 `;
 
 const NewNote = () => {
-  // const [title, setTitle] = useState("");
   const [value, setValue] = useState("");
   const [note, setNote] = useState();
-
-  const [edit, setEdit] = useState(null);
   const dispatch = useDispatch();
-  const { todos } = useSelector((state) => state.todos);
-  // const { loading, sucess: createTaskSucess, task, error } = createTask;
-  // const { loadings, tasks, errors } = useReducer;
-
-  // const changeHandler = (e) => {
-  //   const { name, value } = e.target;
-  //   if (name === "title") {
-  //     setTitle(value);
-  //   }
-  //   if (name === "value") {
-  //     setValue(value);
-  //   }
-  // };
-
-  // const changeHandler = (e) => {
-  //   const { name, value } = e.target;
-  //   setValue((prev) => ({
-  //     ...prev,
-  //     [name]: value,
-  //   }));
-  // setTitle(e.target);
-  // setValue(e.target);
-  // };
   const submitHandler = (e) => {
     e.preventDefault();
-    // if (title.trim() !== "") {
-    //   dispatch(addNote(title));
-    // }
     if (value.trim() !== "") {
       dispatch(addNote(value));
     }
-    // console.log(title);
-    // setTitle("");
     setValue("");
     setNote(!note);
   };
@@ -152,13 +121,7 @@ const NewNote = () => {
                 </button>
               </Task>
               <h1>Write about how you feel?</h1>
-              {/* <input
-                type="text"
-                placeholder="Give your feeling a title"
-                onChange={(e) => setTitle(e.target.value)}
-                name="title"
-                value={title}
-              /> */}
+
               <ReactQuill
                 modules={module}
                 theme="snow"

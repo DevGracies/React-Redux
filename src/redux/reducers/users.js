@@ -49,7 +49,13 @@ export const createUseReducer = (
 };
 
 export const GetUserReducer = (
-  state = { users: [], loadings: false, success: false, errors: null },
+  state = {
+    users: [],
+    user: null,
+    loadings: false,
+    success: false,
+    errors: null,
+  },
   action
 ) => {
   switch (action.type) {
@@ -59,11 +65,21 @@ export const GetUserReducer = (
         loadings: true,
       };
     case GET_USERS_SUCCESS:
+      const { email, password } = action.payload;
+      console.log(email, password, "checkemail");
+      const user = action.payload.data.find(
+        (user) => user.email === email && user.password === password
+      );
+      if (!user) {
+        //console.log("credential incorrecte");
+      }
+      console.log(user);
       return {
         ...state,
         loadings: false,
         success: true,
         users: action.payload,
+        user: user ? user : null,
       };
     case GET_USERS_RESET:
       return {

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import style from "./Login.module.css";
 import {
@@ -24,28 +24,28 @@ function LoginPage() {
   const [isLoading, setIsLoading] = useState(false);
   const dispatch = useDispatch();
   const [isLogIn, setIsLogin] = useState(false);
-  function submitHandler() {
-    setIsLogin(true);
-    dispatch(createUserAction({ email: email, password: password }));
-  }
   const navigate = useNavigate();
   const { userReducer } = useSelector((state) => state);
-  const { userData } = userReducer;
+  const { user } = userReducer;
+
+  // useEffect(() => {
+  //   if (user) {
+  //     navigate("/Join");
+  //   }
+  // }, [navigate, user]);
+  console.log(user, "user");
   const siginHandler = () => {
-    dispatch(getUserAction());
-    const compare =
-      userData &&
-      userData.find(
-        (user) => user.email === email && user.password === password
-      );
-    userData && console.log(userData, "rr");
-    if (compare) {
-      alert("sucessfully logged in");
-      navigate("/Join");
-    } else {
-      alert("incorrect username or password");
-      <Join />;
-    }
+    dispatch(getUserAction(email, password));
+    // const compare =
+    //   users &&
+    //   users.find((user) => user.email === email && user.password === password);
+    // console.log(compare);
+    // console.log(users, "rr");
+    // if (compare) {
+    //   navigate("/Join");
+    // } else {
+    //   alert("incorrect username or password");
+    // }
   };
 
   function changeHandler(e) {
@@ -60,12 +60,9 @@ function LoginPage() {
   function registerHandler(e) {
     e.preventDefault();
     setIsLoading(true);
+    setIsLogin(true);
+    dispatch(createUserAction({ email: email, password: password }));
     setTimeout(() => {
-      const data = {
-        email: email,
-        password: password,
-      };
-      console.log(data);
       setIsLoading(false);
       setEmail("");
       setPassword("");
@@ -76,7 +73,7 @@ function LoginPage() {
       <div className={style.general}>
         <h2>SECURE NOTE</h2>
         <WelcomeForm>
-          <form className={style.form} onSubmit={registerHandler}>
+          <div className={style.form}>
             <h1 className={style.h2}>
               {isLogIn
                 ? "SignIn to your secure note"
@@ -106,11 +103,11 @@ function LoginPage() {
             {isLoading ? (
               <h2>Loading.....</h2>
             ) : isLogIn ? (
-              <button className={style.button} onClick={siginHandler}>
+              <button className={style.button} onClick={() => siginHandler()}>
                 Sign in
               </button>
             ) : (
-              <button className={style.button} onClick={submitHandler}>
+              <button className={style.button} onClick={registerHandler}>
                 Sign Up
               </button>
             )}
@@ -149,7 +146,7 @@ function LoginPage() {
                 </>
               )}
             </div>
-          </form>
+          </div>
         </WelcomeForm>
       </div>
     </React.Fragment>

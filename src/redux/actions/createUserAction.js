@@ -38,17 +38,18 @@ export const createUserAction = (posts) => async (dispatch, state) => {
     });
   }
 };
-export const getUserAction = (posts) => async (dispatch, state) => {
+export const getUserAction = (email, password) => async (dispatch, state) => {
   try {
     dispatch({
       type: GET_USERS_REQUEST,
     });
-    const { data } = await axios.get(backend_base_url, { ...posts });
+    const { data } = await axios.get(backend_base_url);
     dispatch({
       type: GET_USERS_SUCCESS,
       payload: data,
     });
-    return data;
+    console.log(data, "gua request complete");
+    return { email, password, data };
   } catch (error) {
     console.log(error.message, "error");
     dispatch({

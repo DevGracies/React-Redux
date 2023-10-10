@@ -1,14 +1,13 @@
-// import React from "react";
-// import { Navigate, Outlet } from "react-router-dom";
-// import Join from "../../Screen/Join";
-// const useAuth = () => {
-//   const user = { loggedIn: false };
-//   return user && user.loggedIn;
-// };
+import React from "react";
+import { Navigate, Outlet } from "react-router-dom";
+import Join from "../../Screen/Join";
+import { useSelector } from "react-redux";
 
-// const ProtectedRouters = () => {
-//   const isAuth = useAuth();
-//   return isAuth ? <Outlet /> : <Navigate to="/Join" />;
-// };
+const ProtectedRouters = () => {
+  const { userReducer } = useSelector((state) => state);
+  const { user } = userReducer;
 
-// export default ProtectedRouters;
+  return user ? <Outlet /> : <Navigate to="/Join" />;
+};
+
+export default ProtectedRouters;

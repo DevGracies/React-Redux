@@ -28,14 +28,16 @@ function LoginPage() {
   const { userReducer } = useSelector((state) => state);
   const { user } = userReducer;
 
-  // useEffect(() => {
-  //   if (user) {
-  //     navigate("/Join");
-  //   }
-  // }, [navigate, user]);
+  useEffect(() => {
+    if (user) {
+      navigate("/Join");
+    }
+  }, [navigate, user]);
   console.log(user, "user");
   const siginHandler = () => {
+    console.log(email, password, "email and password");
     dispatch(getUserAction(email, password));
+
     // const compare =
     //   users &&
     //   users.find((user) => user.email === email && user.password === password);
@@ -57,8 +59,7 @@ function LoginPage() {
       setPassword(value);
     }
   }
-  function registerHandler(e) {
-    e.preventDefault();
+  function registerHandler() {
     setIsLoading(true);
     setIsLogin(true);
     dispatch(createUserAction({ email: email, password: password }));
@@ -107,7 +108,10 @@ function LoginPage() {
                 Sign in
               </button>
             ) : (
-              <button className={style.button} onClick={registerHandler}>
+              <button
+                className={style.button}
+                onClick={() => registerHandler()}
+              >
                 Sign Up
               </button>
             )}

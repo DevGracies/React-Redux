@@ -3,6 +3,10 @@ import {
   CREATE_USER_REQUEST,
   CREATE_USER_RESET,
   CREATE_USER_SUCCESS,
+  DELETE_USERS_ERROR,
+  DELETE_USERS_REQUEST,
+  DELETE_USERS_RESET,
+  DELETE_USERS_SUCCESS,
 } from "../constants";
 
 import {
@@ -71,7 +75,7 @@ export const GetUserReducer = (
         (user) => user.email === email && user.password === password
       );
       if (!user) {
-        //console.log("credential incorrecte");
+        console.log("credential incorrecte");
       }
       console.log(user);
       return {
@@ -99,5 +103,39 @@ export const GetUserReducer = (
       return state;
   }
 };
+export const DeleteUserReducer = (
+  state = { user: null, loading: false, success: false, error: null },
+  action
+) => {
+  switch (action.type) {
+    case DELETE_USERS_REQUEST:
+      return {
+        ...state,
+        loading: true,
+      };
+    case DELETE_USERS_SUCCESS:
+      return {
+        ...state,
+        success: true,
+        loading: false,
+        user: action.payload,
+      };
+    case DELETE_USERS_RESET:
+      return {
+        loading: false,
+        success: false,
+        user: null,
+        error: null,
+      };
+    case DELETE_USERS_ERROR:
+      return {
+        ...state,
+        loading: false,
+        success: false,
+        error: action.payload,
+      };
+    default:
+      return state;
+  }
+};
 export const GetAllUserReducer = (state = {}, action) => {};
-export const DeleteUserReducer = (state = {}, action) => {};

@@ -3,7 +3,7 @@ import LoginPage from "./component/LoginPage/LoginPage";
 import { Link, Route, Routes } from "react-router-dom";
 import Join from "./Screen/Join";
 import ProtectedRouters from "./component/LoginPage/ProtectedRouters";
-
+import Error from "./Screen/Error";
 const Routers = () => {
   // const [colour, setColour] = useState("#ffff");
   return (
@@ -16,6 +16,7 @@ const Routers = () => {
           // onClick={() => setColour("#ff5102")}
           element={<LoginPage />}
         />
+        <Route path="*" element={<Error />} />
         <Route element={<ProtectedRouters />}>
           <Route path="/join" element={<Join />} />
         </Route>

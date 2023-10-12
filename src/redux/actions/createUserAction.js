@@ -3,6 +3,9 @@ import {
   CREATE_USER_SUCCESS,
   CREATE_USER_RESET,
   CREATE_USER_ERROR,
+  DELETE_USERS_REQUEST,
+  DELETE_USERS_SUCCESS,
+  DELETE_USERS_ERROR,
 } from "../constants";
 import {
   GET_USERS_ERROR,
@@ -12,6 +15,7 @@ import {
 } from "../constants";
 import axios from "axios";
 const backend_base_url = "http://localhost:3004/posts";
+
 export const createUserAction = (posts) => async (dispatch, state) => {
   try {
     console.log(dispatch, "dispatch");
@@ -38,6 +42,7 @@ export const createUserAction = (posts) => async (dispatch, state) => {
     });
   }
 };
+
 export const getUserAction = (email, password) => async (dispatch, state) => {
   try {
     dispatch({
@@ -55,6 +60,33 @@ export const getUserAction = (email, password) => async (dispatch, state) => {
     console.log(error.message, "error");
     dispatch({
       type: GET_USERS_ERROR,
+      payload: error.message,
+    });
+  }
+};
+
+export const deleteUserAction = (id, posts) => async (dispatch, state) => {
+  try {
+    console.log(dispatch, "dispatch");
+    dispatch({
+      type: DELETE_USERS_REQUEST,
+    });
+
+    // throw new Error("An error occured")
+    //make a call
+    const { data } = await axios.delete(`http://localhost:3004/posts/${id}`, {
+      ...posts,
+    });
+    console.log(data, "data");
+    //if we get here, then request is a sucess case
+    dispatch({
+      type: DELETE_USERS_SUCCESS,
+      payload: data,
+    });
+  } catch (error) {
+    console.log(error.message, "error");
+    dispatch({
+      type: DELETE_USERS_ERROR,
       payload: error.message,
     });
   }

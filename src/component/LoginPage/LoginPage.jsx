@@ -37,7 +37,8 @@ function LoginPage() {
   const siginHandler = () => {
     console.log(email, password, "email and password");
     dispatch(getUserAction(email, password));
-
+    setEmail("");
+    setPassword("");
     // const compare =
     //   users &&
     //   users.find((user) => user.email === email && user.password === password);

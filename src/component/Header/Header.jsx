@@ -17,7 +17,7 @@ function Header() {
   const dispatch = useDispatch();
   // const deleteUser = () => {
   //   dispatch(deleteUserAction(user.id));
-  // };jjkjkjkkkkkkk
+  // }
   return (
     <Top>
       <h2 className={style.note}>Journal</h2>

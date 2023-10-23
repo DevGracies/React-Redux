@@ -5,17 +5,10 @@ import Join from "./Screen/Join";
 import ProtectedRouters from "./component/LoginPage/ProtectedRouters";
 import Error from "./Screen/Error";
 const Routers = () => {
-  // const [colour, setColour] = useState("#ffff");
   return (
     <div>
-      {/* style={{ background: colour }} */}
-      {/* <Link to="/" onClick={() => setColour("#ff5102")} /> */}
       <Routes>
-        <Route
-          path="/"
-          // onClick={() => setColour("#ff5102")}
-          element={<LoginPage />}
-        />
+        <Route path="/" element={<LoginPage />} />
         <Route path="*" element={<Error />} />
         <Route element={<ProtectedRouters />}>
           <Route path="/join" element={<Join />} />

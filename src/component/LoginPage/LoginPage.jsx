@@ -6,9 +6,7 @@ import {
   getUserAction,
 } from "../../redux/actions/createUserAction";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, Navigate } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-import Join from "../../Screen/Join";
 
 const WelcomeForm = styled.div`
   justify-content: center;
@@ -39,16 +37,6 @@ function LoginPage() {
     dispatch(getUserAction(email, password));
     setEmail("");
     setPassword("");
-    // const compare =
-    //   users &&
-    //   users.find((user) => user.email === email && user.password === password);
-    // console.log(compare);
-    // console.log(users, "rr");
-    // if (compare) {
-    //   navigate("/Join");
-    // } else {
-    //   alert("incorrect username or password");
-    // }
   };
 
   function changeHandler(e) {

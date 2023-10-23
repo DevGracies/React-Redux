@@ -1,16 +1,10 @@
-import React, { useReducer, useState } from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import { FaPlus } from "react-icons/fa";
-import { useDispatch, useSelector } from "react-redux";
-import { createTaskAction } from "../../redux/actions/newTaskAction";
-import { getTaskAction } from "../../redux/actions/newTaskAction";
-import {
-  addNote,
-  deleteNote,
-  updateNote,
-} from "../../redux/actions/JornalAction";
+import { useDispatch } from "react-redux";
+import { addNote } from "../../redux/actions/JornalAction";
 
 const Top = styled.section`
   background-color: #fff;

@@ -8,4 +8,5 @@ const setMiddleware =
   process.env.NODE_ENV === "development"
     ? composeWithDevTools(applyMiddleware(...middleware))
     : applyMiddleware(...middleware);
+
 export const store = createStore(reducers, setMiddleware);

@@ -1,16 +1,12 @@
 import {
   CREATE_USER_REQUEST,
   CREATE_USER_SUCCESS,
-  CREATE_USER_RESET,
   CREATE_USER_ERROR,
   DELETE_USERS_REQUEST,
   DELETE_USERS_SUCCESS,
   DELETE_USERS_ERROR,
-} from "../constants";
-import {
   GET_USERS_ERROR,
   GET_USERS_REQUEST,
-  GET_USERS_RESET,
   GET_USERS_SUCCESS,
 } from "../constants";
 import axios from "axios";

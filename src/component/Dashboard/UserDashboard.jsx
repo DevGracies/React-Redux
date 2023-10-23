@@ -24,7 +24,6 @@ function UserDashboard() {
       <div>
         <AllNote />
       </div>
-      {/* <Link to="/" onClick={() => setColour("#ff5102")} /> */}
     </div>
   );
 }

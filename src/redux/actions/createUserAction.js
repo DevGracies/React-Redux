@@ -9,6 +9,7 @@ import {
   GET_USERS_REQUEST,
   GET_USERS_SUCCESS,
 } from "../constants";
+
 import axios from "axios";
 const backend_base_url = "http://localhost:3004/posts";
 

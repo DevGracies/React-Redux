@@ -3,9 +3,9 @@ import {
   CREATE_TASK_REQUEST,
   CREATE_TASK_RESET,
   CREATE_TASK_SUCCESS,
-} from "../constants";
-
-import {
+  DELETE_USERS_ERROR,
+  DELETE_USERS_REQUEST,
+  DELETE_USERS_SUCCESS,
   GET_TASKS_ERROR,
   GET_TASKS_REQUEST,
   GET_TASKS_RESET,
@@ -83,4 +83,30 @@ export const GetTASKReducer = (
   }
 };
 export const GetAllTASKReducer = (state = {}, action) => {};
-export const DeleteTASKReducer = (state = {}, action) => {};
+export const DeleteTASKReducer = (
+  state = { task: null, loading: false, success: false, error: null },
+  action
+) => {
+  switch (action.type) {
+    case DELETE_USERS_REQUEST:
+      return {
+        ...state,
+        loading: true,
+      };
+    case DELETE_USERS_SUCCESS:
+      return {
+        ...state,
+        loading: true,
+        task: action.payload,
+      };
+    case DELETE_USERS_ERROR:
+      return {
+        ...state,
+        loading: false,
+        success: false,
+        error: action.payload,
+      };
+    default:
+      return state;
+  }
+};

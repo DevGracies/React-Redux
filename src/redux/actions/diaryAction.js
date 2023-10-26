@@ -1,11 +1,12 @@
 import {
   CREATE_DIARY_ERROR,
   CREATE_DIARY_REQUEST,
-  CREATE_DIARY_RESET,
   CREATE_DIARY_SUCCESS,
+  DELETE_DIARY_ERROR,
+  DELETE_DIARY_REQUEST,
+  DELETE_DIARY_SUCCESS,
   GET_DIARY_ERROR,
   GET_DIARY_REQUEST,
-  GET_DIARY_RESET,
   GET_DIARY_SUCCESS,
   UPDATE_DIARY_ERROR,
   UPDATE_DIARY_REQUEST,
@@ -88,6 +89,34 @@ export const updateDiaryAction = (id) => async (dispatch, state) => {
   } catch (error) {
     dispatch({
       type: UPDATE_DIARY_ERROR,
+      payload: error.message,
+    });
+  }
+};
+
+export const deleteDiaryAction = (id) => async (dispatch, state) => {
+  const diary = {};
+  const config = {
+    headers: {
+      "Content-Type": "application/json",
+      authorization: `Bearer ${diary.token}`,
+    },
+  };
+  dispatch({
+    type: DELETE_DIARY_REQUEST,
+  });
+  try {
+    const { data } = await axios.delete(
+      `http://localhost:3004/diary/${id}`,
+      config
+    );
+    dispatch({
+      type: DELETE_DIARY_SUCCESS,
+      payload: data,
+    });
+  } catch (error) {
+    dispatch({
+      type: DELETE_DIARY_ERROR,
       payload: error.message,
     });
   }

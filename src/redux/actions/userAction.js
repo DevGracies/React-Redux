@@ -2,12 +2,15 @@ import {
   CREATE_USER_REQUEST,
   CREATE_USER_SUCCESS,
   CREATE_USER_ERROR,
-  DELETE_USERS_REQUEST,
-  DELETE_USERS_SUCCESS,
-  DELETE_USERS_ERROR,
-  GET_USERS_ERROR,
+  DELETE_USER_REQUEST,
+  DELETE_USER_SUCCESS,
+  DELETE_USER_ERROR,
+  GET_USER_ERROR,
+  GET_USER_REQUEST,
+  GET_USER_SUCCESS,
   GET_USERS_REQUEST,
   GET_USERS_SUCCESS,
+  GET_USERS_ERROR,
 } from "../constants";
 
 import axios from "axios";
@@ -51,7 +54,7 @@ export const createUserAction = (posts) => async (dispatch, state) => {
   }
 };
 
-export const getUserAction = (email, password) => async (dispatch, state) => {
+export const getUsersAction = (email, password) => async (dispatch, state) => {
   const user = {};
   const config = {
     headers: {
@@ -61,11 +64,11 @@ export const getUserAction = (email, password) => async (dispatch, state) => {
   };
   try {
     dispatch({
-      type: GET_USERS_REQUEST,
+      type: GET_USER_REQUEST,
     });
     const { data } = await axios.get(backend_base_url, config);
     dispatch({
-      type: GET_USERS_SUCCESS,
+      type: GET_USER_SUCCESS,
       payload: { email, password, data },
     });
     console.log(data, "gua request complete");
@@ -74,17 +77,47 @@ export const getUserAction = (email, password) => async (dispatch, state) => {
   } catch (error) {
     console.log(error.message, "error");
     dispatch({
-      type: GET_USERS_ERROR,
+      type: GET_USER_ERROR,
       payload: error.message,
     });
   }
 };
 
+export const getUserAction =
+  (email, password, id) => async (dispatch, state) => {
+    const user = {};
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+        authorization: `Bearer ${user.token}`,
+      },
+    };
+    try {
+      dispatch({
+        type: GET_USERS_REQUEST,
+      });
+      const { data } = await axios.get(backend_base_url, config);
+      dispatch({
+        type: GET_USERS_SUCCESS,
+        payload: { email, password, data },
+      });
+      console.log(data, "gua request complete");
+
+      return { email, password, data };
+    } catch (error) {
+      console.log(error.message, "error");
+      dispatch({
+        type: GET_USERS_ERROR,
+        payload: error.message,
+      });
+    }
+  };
+
 export const deleteUserAction = (id) => async (dispatch) => {
   try {
     console.log(dispatch, "dispatch");
     dispatch({
-      type: DELETE_USERS_REQUEST,
+      type: DELETE_USER_REQUEST,
     });
 
     // throw new Error("An error occured")
@@ -93,13 +126,13 @@ export const deleteUserAction = (id) => async (dispatch) => {
     console.log(data, "data");
     //if we get here, then request is a sucess case
     dispatch({
-      type: DELETE_USERS_SUCCESS,
+      type: DELETE_USER_SUCCESS,
       payload: data,
     });
   } catch (error) {
     console.log(error.message, "error");
     dispatch({
-      type: DELETE_USERS_ERROR,
+      type: DELETE_USER_ERROR,
       payload: error.message,
     });
   }

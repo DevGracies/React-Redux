@@ -14,6 +14,13 @@ import axios from "axios";
 const backend_base_url = "http://localhost:3004/posts";
 
 export const createUserAction = (posts) => async (dispatch, state) => {
+  const user = {};
+  const config = {
+    headers: {
+      "Content-Type": "application/json",
+      authorization: `Bearer ${user.token}`,
+    },
+  };
   try {
     console.log(dispatch, "dispatch");
     dispatch({
@@ -22,9 +29,13 @@ export const createUserAction = (posts) => async (dispatch, state) => {
 
     // throw new Error("An error occured")
     //make a call
-    const { data } = await axios.post(backend_base_url, {
-      ...posts,
-    });
+    const { data } = await axios.post(
+      backend_base_url,
+      {
+        ...posts,
+      },
+      config
+    );
     console.log(data, "data");
     //if we get here, then request is a sucess case
     dispatch({
@@ -41,11 +52,18 @@ export const createUserAction = (posts) => async (dispatch, state) => {
 };
 
 export const getUserAction = (email, password) => async (dispatch, state) => {
+  const user = {};
+  const config = {
+    headers: {
+      "Content-Type": "application/json",
+      authorization: `Bearer ${user.token}`,
+    },
+  };
   try {
     dispatch({
       type: GET_USERS_REQUEST,
     });
-    const { data } = await axios.get(backend_base_url);
+    const { data } = await axios.get(backend_base_url, config);
     dispatch({
       type: GET_USERS_SUCCESS,
       payload: { email, password, data },
@@ -62,7 +80,7 @@ export const getUserAction = (email, password) => async (dispatch, state) => {
   }
 };
 
-export const deleteUserAction = (id, posts) => async (dispatch, state) => {
+export const deleteUserAction = (id) => async (dispatch) => {
   try {
     console.log(dispatch, "dispatch");
     dispatch({
@@ -71,9 +89,7 @@ export const deleteUserAction = (id, posts) => async (dispatch, state) => {
 
     // throw new Error("An error occured")
     //make a call
-    const { data } = await axios.delete(`http://localhost:3004/posts/${id}`, {
-      ...posts,
-    });
+    const { data } = await axios.delete(`http://localhost:3004/posts/${id}`);
     console.log(data, "data");
     //if we get here, then request is a sucess case
     dispatch({

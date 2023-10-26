@@ -1,9 +1,3 @@
 {
-  "posts": [
-    {
-      "email": "deedee@gmail.com",
-      "password": "deedee12",
-      "id": 2
-    }
-  ]
+  "posts": []
 }

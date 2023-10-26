@@ -1,16 +1,18 @@
 import { combineReducers } from "redux";
 import {
-  buyCake,
-  createUseReducer,
-  DeleteTASKReducer,
+  DeleteUserReducer,
   GetUserReducer,
+  GetUsersReducer,
+  buyCake,
+  createUserReducer,
 } from "./reducers";
 import todoReducer from "./reducers/jornal";
 
 export const reducers = combineReducers({
   cakes: buyCake,
-  createUser: createUseReducer,
-  userReducer: GetUserReducer,
+  createUser: createUserReducer,
+  getUser: GetUserReducer,
+  getusers: GetUsersReducer,
   todos: todoReducer,
-  delete: DeleteTASKReducer,
+  deleteUser: DeleteUserReducer,
 });

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { updateNote, deleteNote } from "../../redux/actions/JornalAction";
 import styled from "styled-components";
+import { deleteDiaryAction, updateDiaryAction } from "../../redux/actions";
 
 const Paste = styled.div`
   background-color: #fff;
@@ -23,20 +23,23 @@ const AllNote = () => {
   const [edit, setEdit] = useState(null);
   const [editNote, setEditNote] = useState("");
   const dispatch = useDispatch();
-  const { todos } = useSelector((state) => state.todos);
-  console.log(todos);
+  const { deleteDiary, updateDiary, createDiary } = useSelector(
+    (state) => state
+  );
+  const { diary } = createDiary;
+  // console.log(todos);
   const editHandler = (id, currNote) => {
     console.log(currNote);
     setEdit(id);
     setEditNote(currNote);
   };
   const deleteHandler = (id) => {
-    dispatch(deleteNote(id));
+    dispatch(deleteDiaryAction(id));
   };
   const updateHandler = (e) => {
     e.preventDefault();
     if (editNote.trim() !== "") {
-      dispatch(updateNote(edit, editNote));
+      dispatch(updateDiaryAction(edit, editNote));
       setEdit(null);
       setEditNote("");
       console.log("updated");
@@ -51,7 +54,7 @@ const AllNote = () => {
           alignItems: "center",
         }}
       >
-        {todos.map((note) => {
+        {diary.map((note) => {
           return (
             <div key={note.id}>
               <Paste>
@@ -78,10 +81,10 @@ const AllNote = () => {
                       }}
                     >
                       <Button onClick={() => editHandler(note.id, note.value)}>
-                        Edit Journal
+                        Edit Diary
                       </Button>
                       <Button onClick={() => deleteHandler(note.id)}>
-                        Delete Journal 
+                        Delete Diary
                       </Button>
                     </div>
                   </div>

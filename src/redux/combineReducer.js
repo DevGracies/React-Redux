@@ -1,10 +1,14 @@
 import { combineReducers } from "redux";
 import {
+  DeleteDiaryReducer,
   DeleteUserReducer,
   GetUserReducer,
   GetUsersReducer,
   buyCake,
+  createDiaryReducer,
   createUserReducer,
+  getAllDiaryReducers,
+  updateDiaryReducer,
 } from "./reducers";
 import todoReducer from "./reducers/jornal";
 
@@ -12,7 +16,11 @@ export const reducers = combineReducers({
   cakes: buyCake,
   createUser: createUserReducer,
   getUser: GetUserReducer,
-  getusers: GetUsersReducer,
+  getUsers: GetUsersReducer,
   todos: todoReducer,
   deleteUser: DeleteUserReducer,
+  updateDiary: updateDiaryReducer,
+  getDiaries: getAllDiaryReducers,
+  deleteDiary: DeleteDiaryReducer,
+  createDiary: createDiaryReducer,
 });

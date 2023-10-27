@@ -5,6 +5,9 @@ import {
   DELETE_DIARY_ERROR,
   DELETE_DIARY_REQUEST,
   DELETE_DIARY_SUCCESS,
+  GET_DIARIES_ERROR,
+  GET_DIARIES_REQUEST,
+  GET_DIARIES_SUCCESS,
   GET_DIARY_ERROR,
   GET_DIARY_REQUEST,
   GET_DIARY_SUCCESS,
@@ -41,7 +44,7 @@ export const createDiaryAction = (note) => async (dispatch, state) => {
   }
 };
 
-export const getDiaryAction = async (dispatch, state) => {
+export const getDiaryAction = (id) => async (dispatch, state) => {
   const diary = {};
   const config = {
     headers: {
@@ -53,7 +56,7 @@ export const getDiaryAction = async (dispatch, state) => {
     dispatch({
       type: GET_DIARY_REQUEST,
     });
-    const { data } = await axios.get(backend_base_url, config);
+    const { data } = await axios.get(`${backend_base_url}/${id}`, config);
     dispatch({
       type: GET_DIARY_SUCCESS,
       payload: data,
@@ -66,7 +69,32 @@ export const getDiaryAction = async (dispatch, state) => {
   }
 };
 
-export const updateDiaryAction = (id) => async (dispatch, state) => {
+export const getDiariesAction = async (dispatch, state) => {
+  const diary = {};
+  const config = {
+    headers: {
+      " Content-Type": "application/json",
+      authorization: `Bearer ${diary.token}`,
+    },
+  };
+  try {
+    dispatch({
+      type: GET_DIARIES_REQUEST,
+    });
+    const { data } = await axios.get(backend_base_url, config);
+    dispatch({
+      type: GET_DIARIES_SUCCESS,
+      payload: data,
+    });
+  } catch (error) {
+    dispatch({
+      type: GET_DIARIES_ERROR,
+      payload: error.message,
+    });
+  }
+};
+
+export const updateDiaryAction = (id, newValue) => async (dispatch, state) => {
   const diary = {};
   const config = {
     headers: {
@@ -85,6 +113,7 @@ export const updateDiaryAction = (id) => async (dispatch, state) => {
     dispatch({
       type: UPDATE_DIARY_SUCCESS,
       payload: data,
+      newValue,
     });
   } catch (error) {
     dispatch({

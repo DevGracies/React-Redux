@@ -54,7 +54,7 @@ export const createUserAction = (posts) => async (dispatch, state) => {
   }
 };
 
-export const getUsersAction = (email, password) => async (dispatch, state) => {
+export const getUserAction = (email, password) => async (dispatch, state) => {
   const user = {};
   const config = {
     headers: {
@@ -71,7 +71,7 @@ export const getUsersAction = (email, password) => async (dispatch, state) => {
       type: GET_USER_SUCCESS,
       payload: { email, password, data },
     });
-    console.log(data, "gua request complete");
+    console.log(data, "gua request completed");
 
     return { email, password, data };
   } catch (error) {
@@ -83,7 +83,7 @@ export const getUsersAction = (email, password) => async (dispatch, state) => {
   }
 };
 
-export const getUserAction =
+export const getUsersAction =
   (email, password, id) => async (dispatch, state) => {
     const user = {};
     const config = {

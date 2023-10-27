@@ -1,12 +1,9 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import style from "./Login.module.css";
-import {
-  createUserAction,
-  getUserAction,
-} from "../../redux/actions/createUserAction";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { createUserAction, getUserAction } from "../../redux/actions";
 
 const WelcomeForm = styled.div`
   justify-content: center;
@@ -23,21 +20,22 @@ function LoginPage() {
   const dispatch = useDispatch();
   const [isLogIn, setIsLogin] = useState(false);
   const navigate = useNavigate();
-  const { userReducer } = useSelector((state) => state);
-  const { user } = userReducer;
-
+  const { createUser, getUser } = useSelector((state) => state);
+  // const { user } = createUser;
+  const { user } = getUser;
   useEffect(() => {
     if (user) {
       navigate("/Join");
     }
-  }, [navigate, user]);
-  console.log(user, "user");
+  }, [user, navigate]);
   const siginHandler = () => {
     console.log(email, password, "email and password");
     dispatch(getUserAction(email, password));
     setEmail("");
     setPassword("");
   };
+  // console.log(geUser);
+  console.log(user, "loginpage");
 
   function changeHandler(e) {
     const { name, value } = e.target;
@@ -66,8 +64,8 @@ function LoginPage() {
           <div className={style.form}>
             <h1 className={style.h2}>
               {isLogIn
-                ? "SignIn to your secure note"
-                : "SignUp to your secure note"}{" "}
+                ? "SignIn to create your diary"
+                : "SignUp to create your diary"}{" "}
             </h1>
             <label className={style.label}>Email</label> <br />
             <input

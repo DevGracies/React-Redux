@@ -5,7 +5,6 @@ import {
   CREATE_USER_SUCCESS,
   DELETE_USER_ERROR,
   DELETE_USER_REQUEST,
-  DELETE_USER_RESET,
   GET_USERS_ERROR,
   GET_USERS_REQUEST,
   GET_USERS_RESET,
@@ -159,13 +158,6 @@ export const DeleteUserReducer = (
         success: true,
         loading: false,
         user: action.payload,
-      };
-    case DELETE_USER_RESET:
-      return {
-        loading: false,
-        success: false,
-        user: null,
-        error: null,
       };
     case DELETE_USER_ERROR:
       return {

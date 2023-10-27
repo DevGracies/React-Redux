@@ -1,9 +1,9 @@
 import React, { useEffect } from "react";
 import styled from "styled-components";
 import style from "./Header.module.css";
-import { Link, Navigate, Outlet } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { deleteUserAction } from "../../redux/actions/createUserAction";
+import { deleteUserAction } from "../../redux/actions";
 const Top = styled.section`
   display: flex;
   justify-content: space-between;
@@ -13,8 +13,8 @@ const Top = styled.section`
 
 function Header() {
   const dispatch = useDispatch();
-  const { userReducer } = useSelector((state) => state);
-  const { user } = userReducer;
+  const { getUser } = useSelector((state) => state);
+  const { user } = getUser;
   console.log(user, "mk1");
 
   // const logout = !user;
@@ -22,7 +22,9 @@ function Header() {
   const deleteAccount = (User) => dispatch(deleteUserAction(User.id, User));
   // console.log(logout, "userrrr");
 
-  useEffect(() => {}, [user]);
+  useEffect(() => {
+    console.log(user, "delete user");
+  }, [user]);
   return (
     <Top>
       <h2 className={style.note}>Journal</h2>
@@ -31,7 +33,7 @@ function Header() {
           <button className={style.account}>Logout</button>
         </Link>
 
-        <button className={style.account} onClick={deleteAccount(user)}>
+        <button className={style.account} onClick={() => deleteAccount(user)}>
           Delete Account
         </button>
       </div>

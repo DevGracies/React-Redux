@@ -19,7 +19,7 @@ import {
 import axios from "axios";
 const backend_base_url = "http://localhost:3004/diary";
 
-export const createDiaryAction = (note) => async (dispatch, state) => {
+export const createDiaryAction = (value) => async (dispatch, state) => {
   const diary = {};
   const config = {
     headers: {
@@ -31,7 +31,7 @@ export const createDiaryAction = (note) => async (dispatch, state) => {
     dispatch({
       type: CREATE_DIARY_REQUEST,
     });
-    const { data } = await axios.post(backend_base_url, { ...note }, config);
+    const { data } = await axios.post(backend_base_url, { ...value }, config);
     dispatch({
       type: CREATE_DIARY_SUCCESS,
       payload: data,
@@ -44,7 +44,7 @@ export const createDiaryAction = (note) => async (dispatch, state) => {
   }
 };
 
-export const getDiaryAction = (id) => async (dispatch, state) => {
+export const getDiaryAction = (value) => async (dispatch, state) => {
   const diary = {};
   const config = {
     headers: {
@@ -56,10 +56,10 @@ export const getDiaryAction = (id) => async (dispatch, state) => {
     dispatch({
       type: GET_DIARY_REQUEST,
     });
-    const { data } = await axios.get(`${backend_base_url}/${id}`, config);
+    const { data } = await axios.get(backend_base_url, config);
     dispatch({
       type: GET_DIARY_SUCCESS,
-      payload: data,
+      payload: { data, value },
     });
   } catch (error) {
     dispatch({

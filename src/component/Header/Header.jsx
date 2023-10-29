@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import styled from "styled-components";
 import style from "./Header.module.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { deleteUserAction } from "../../redux/actions";
 const Top = styled.section`
@@ -12,14 +12,14 @@ const Top = styled.section`
 `;
 
 function Header() {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const { getUser } = useSelector((state) => state);
   const { user } = getUser;
   console.log(user, "mk1");
 
-  // const logout = !user;
-
-  const deleteAccount = (User) => dispatch(deleteUserAction(User.id, User));
+  const deleteAccount = (User) =>
+    dispatch(deleteUserAction(User.id, User), navigate("/"));
   // console.log(logout, "userrrr");
 
   useEffect(() => {
@@ -27,7 +27,7 @@ function Header() {
   }, [user]);
   return (
     <Top>
-      <h2 className={style.note}>Journal</h2>
+      <h2 className={style.note}>Diary</h2>
       <div>
         <Link to="/">
           <button className={style.account}>Logout</button>

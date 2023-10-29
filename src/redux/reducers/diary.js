@@ -92,6 +92,35 @@ export const updateDiaryReducer = (
       return state;
   }
 };
+
+export const getDiaryReducer = (
+  state = { diary: [], loading: false, success: false, error: null },
+  action
+) => {
+  switch (action.type) {
+    case GET_DIARY_REQUEST:
+      return {
+        ...state,
+        loading: true,
+      };
+    case GET_DIARY_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        success: true,
+        diary: [...state.diary, { value: action.payload.value }],
+      };
+    case GET_DIARY_ERROR:
+      return {
+        ...state,
+        success: false,
+        error: action.payload,
+      };
+    default:
+      return state;
+  }
+};
+
 export const getAllDiaryReducers = (
   state = { diary: [], loading: false, error: null, success: false },
   action
@@ -106,13 +135,13 @@ export const getAllDiaryReducers = (
       return {
         ...state,
         success: true,
-        tasks: action.payload,
+        diary: action.payload,
       };
     case GET_DIARIES_RESET:
       return {
         loadings: false,
         success: false,
-        tasks: null,
+        diary: [],
         errors: null,
       };
     case GET_DIARIES_ERROR:

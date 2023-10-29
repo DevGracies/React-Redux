@@ -4,7 +4,7 @@ import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import { FaPlus } from "react-icons/fa";
 import { useDispatch } from "react-redux";
-import { addNote } from "../../redux/actions/JornalAction";
+import { createDiaryAction } from "../../redux/actions";
 
 const Top = styled.section`
   background-color: #fff;
@@ -17,6 +17,7 @@ const Top = styled.section`
   color: #ff5102;
   padding: 20px;
 `;
+
 const Note = styled.button`
   cursor: pointer;
   background-color: #ff5102;
@@ -65,7 +66,7 @@ const NewNote = () => {
   const submitHandler = (e) => {
     e.preventDefault();
     if (value.trim() !== "") {
-      dispatch(addNote(value));
+      dispatch(createDiaryAction(value));
     }
     setValue("");
     setNote(!note);
@@ -99,7 +100,7 @@ const NewNote = () => {
           <Overall>
             <Fold onSubmit={submitHandler}>
               <Task>
-                <h2>New Task</h2>
+                <h2>New Diary</h2>
                 <button
                   onClick={() => setNote(false)}
                   style={{

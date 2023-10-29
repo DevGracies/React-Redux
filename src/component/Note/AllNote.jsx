@@ -1,7 +1,11 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
-import { deleteDiaryAction, updateDiaryAction } from "../../redux/actions";
+import {
+  deleteDiaryAction,
+  getDiaryAction,
+  updateDiaryAction,
+} from "../../redux/actions";
 
 const Paste = styled.div`
   background-color: #fff;
@@ -23,11 +27,9 @@ const AllNote = () => {
   const [edit, setEdit] = useState(null);
   const [editNote, setEditNote] = useState("");
   const dispatch = useDispatch();
-  const { deleteDiary, updateDiary, createDiary } = useSelector(
-    (state) => state
-  );
+  const { createDiary, getDiary } = useSelector((state) => state);
   const { diary } = createDiary;
-  // console.log(todos);
+  console.log(createDiary, "createDiary");
   const editHandler = (id, currNote) => {
     console.log(currNote);
     setEdit(id);
@@ -45,6 +47,9 @@ const AllNote = () => {
       console.log("updated");
     }
   };
+  // const realValue = () => {
+  //   dispatch(getDiaryAction());
+  // };
   return (
     <div>
       <ul
@@ -58,8 +63,7 @@ const AllNote = () => {
           return (
             <div key={note.id}>
               <Paste>
-                <h6>{Date.now()} </h6>
-                <h6>10:23</h6>
+                <h6>{Date()} </h6>
                 {note.id === edit ? (
                   <div>
                     <input

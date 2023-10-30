@@ -21,7 +21,7 @@ import {
 } from "../constants";
 
 export const createDiaryReducer = (
-  state = { diary: [], loading: false, error: null, success: false },
+  state = { diary: null, loading: false, error: null, success: false },
   action
 ) => {
   switch (action.type) {
@@ -32,18 +32,10 @@ export const createDiaryReducer = (
       };
     case CREATE_DIARY_SUCCESS:
       return {
+        ...state,
         success: true,
         loading: false,
-        ...state,
-        diary: [
-          ...state.diary,
-          {
-            id: Date.now(),
-            name: "this is the diary state, the value isn't showing.. value/value",
-            value: action.payload.value,
-            values: action.payload,
-          },
-        ],
+        diary: action.payload,
       };
     case CREATE_DIARY_RESET:
       return {
@@ -134,7 +126,7 @@ export const getDiaryReducer = (
 };
 
 export const getAllDiaryReducers = (
-  state = { diary: [], loading: false, error: null, success: false },
+  state = { diaries: [], loading: false, error: null, success: false },
   action
 ) => {
   switch (action.type) {
@@ -147,13 +139,13 @@ export const getAllDiaryReducers = (
       return {
         ...state,
         success: true,
-        diary: action.payload,
+        diaries: action.payload,
       };
     case GET_DIARIES_RESET:
       return {
         loadings: false,
         success: false,
-        diary: [],
+        diaries: action.payload,
         errors: null,
       };
     case GET_DIARIES_ERROR:

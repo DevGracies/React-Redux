@@ -32,7 +32,11 @@ export const createDiaryAction = (value) => async (dispatch, state) => {
     dispatch({
       type: CREATE_DIARY_REQUEST,
     });
-    const { data } = await axios.post(backend_base_url, { ...value }, config);
+
+    console.log(value, "value from action");
+    const { data } = await axios.post(backend_base_url, {
+      desc: "ghfhgfhfhfhfh",
+    });
     console.log(data, "the data in the diary");
     dispatch({
       type: CREATE_DIARY_SUCCESS,
@@ -72,7 +76,7 @@ export const getDiaryAction = (value) => async (dispatch, state) => {
   }
 };
 
-export const getDiariesAction = async (dispatch, state) => {
+export const getDiariesAction = () => async (dispatch, state) => {
   const diary = {};
   const config = {
     headers: {

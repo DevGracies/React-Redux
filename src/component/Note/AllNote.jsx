@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
 import {
   deleteDiaryAction,
+  getDiariesAction,
   getDiaryAction,
   updateDiaryAction,
 } from "../../redux/actions";
@@ -33,8 +34,8 @@ const AllNote = () => {
   const [edit, setEdit] = useState(null);
 
   const [editNote, setEditNote] = useState("");
-  const { createDiary, getDiary } = useSelector((state) => state);
-  const { diary } = createDiary;
+  const { createDiary, getDiaries } = useSelector((state) => state);
+  const { diaries } = getDiaries;
   console.log(createDiary, "createDiary");
   const editHandler = (id, currNote) => {
     console.log(currNote, "current note");
@@ -57,6 +58,9 @@ const AllNote = () => {
   // const realValue = () => {
   //   dispatch(getDiaryAction());
   // };
+  useEffect(() => {
+    dispatch(getDiariesAction());
+  }, [dispatch]);
 
   return (
     <div>
@@ -67,7 +71,7 @@ const AllNote = () => {
           alignItems: "center",
         }}
       >
-        {diary.map((note) => {
+        {diaries.map((note) => {
           return (
             <div key={note.id}>
               <Paste>
@@ -85,14 +89,14 @@ const AllNote = () => {
                   </div>
                 ) : (
                   <div>
-                    <p dangerouslySetInnerHTML={{ __html: note.value }} />
+                    <p dangerouslySetInnerHTML={{ __html: note.desc }} />
                     <div
                       style={{
                         display: "flex",
                         justifyContent: "space-between",
                       }}
                     >
-                      <Button onClick={() => editHandler(note.id, note.value)}>
+                      <Button onClick={() => editHandler(note.id, note.desc)}>
                         Edit Diary
                       </Button>
                       <Button onClick={() => deleteHandler(note.id)}>

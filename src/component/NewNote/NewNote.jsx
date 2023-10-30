@@ -65,6 +65,7 @@ const NewNote = () => {
   const dispatch = useDispatch();
   const submitHandler = (e) => {
     e.preventDefault();
+
     if (value.trim() !== "") {
       dispatch(createDiaryAction(value));
     }

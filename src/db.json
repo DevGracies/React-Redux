@@ -14,26 +14,31 @@
       "email": "degracies04@gmail.com",
       "password": "deedee12",
       "id": 3
+    },
+    {
+      "email": "degracies04@gmail.com",
+      "password": "deedee12",
+      "id": 4
+    },
+    {
+      "email": "degracies04@gmail.com",
+      "password": "deedee12",
+      "id": 5
+    },
+    {
+      "email": "degracies04@gmail.com",
+      "password": "deedee12",
+      "id": 6
     }
   ],
   "diary": [
     {
-      "id": 1
-    },
-    {
+      "desc": "ghfhgfhfhfhfh",
       "id": 2
     },
     {
+      "desc": "ghfhgfhfhfhfh",
       "id": 3
-    },
-    {
-      "id": 4
-    },
-    {
-      "id": 5
-    },
-    {
-      "id": 6
     }
   ]
 }

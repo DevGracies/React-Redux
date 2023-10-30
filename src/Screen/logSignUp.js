@@ -1,12 +1,12 @@
-import React from 'react'
-import LoginPage from '../component/LoginPage/LoginPage'
+// import React from 'react'
+// import LoginPage from '../component/LoginPage/LoginPage'
 
-function logSignUp() {
-  return (
-      <div>
-          <LoginPage isloggedIn={false} />
-    </div>
-  )
-}
+// function logSignUp() {
+//   return (
+//       <div>
+//             <LoginPage isloggedIn={false} />
+//     </div>
+//   )
+// }
 
-export default logSignUp
+// export default logSignUp

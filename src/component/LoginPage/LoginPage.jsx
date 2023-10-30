@@ -49,6 +49,12 @@ function LoginPage() {
   function registerHandler() {
     setIsLoading(true);
     setIsLogin(true);
+
+    // if ( user.find((user) => user.email === email)) {
+    //   alert("Email already registered")
+    // } else {
+    //   dispatch(createUserAction({ email: email, password: password }));
+    // }
     dispatch(createUserAction({ email: email, password: password }));
     setTimeout(() => {
       setIsLoading(false);

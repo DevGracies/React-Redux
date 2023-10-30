@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 const ProtectedRouters = () => {
   const { getUser } = useSelector((state) => state);
   const { user } = getUser;
-  console.log(user, "protectedrouter");
+  // console.log(user, "protectedrouter");
   return user ? <Outlet /> : <Navigate to="/" />;
 };
 

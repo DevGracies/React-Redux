@@ -28,15 +28,18 @@ export const createDiaryAction = (value) => async (dispatch, state) => {
     },
   };
   try {
+    console.log(dispatch, "this is the dispactch diary action");
     dispatch({
       type: CREATE_DIARY_REQUEST,
     });
     const { data } = await axios.post(backend_base_url, { ...value }, config);
+    console.log(data, "the data in the diary");
     dispatch({
       type: CREATE_DIARY_SUCCESS,
       payload: data,
     });
   } catch (error) {
+    console.log(error.message, "error");
     dispatch({
       type: CREATE_DIARY_ERROR,
       payload: error.message,

@@ -24,17 +24,24 @@ const Button = styled.button`
 `;
 
 const AllNote = () => {
-  const [edit, setEdit] = useState(null);
-  const [editNote, setEditNote] = useState("");
   const dispatch = useDispatch();
+  // const getTheDiary = (value) => {
+  //   dispatch(getDiaryAction(value));
+  //   console.log(value, "value");
+  // };
+  // const [edit, setEdit] = useState(getTheDiary);
+  const [edit, setEdit] = useState(null);
+
+  const [editNote, setEditNote] = useState("");
   const { createDiary, getDiary } = useSelector((state) => state);
   const { diary } = createDiary;
   console.log(createDiary, "createDiary");
   const editHandler = (id, currNote) => {
-    console.log(currNote);
+    console.log(currNote, "current note");
     setEdit(id);
     setEditNote(currNote);
   };
+  console.log(edit, "edit");
   const deleteHandler = (id) => {
     dispatch(deleteDiaryAction(id));
   };
@@ -50,6 +57,7 @@ const AllNote = () => {
   // const realValue = () => {
   //   dispatch(getDiaryAction());
   // };
+
   return (
     <div>
       <ul

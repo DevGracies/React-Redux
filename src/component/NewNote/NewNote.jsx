@@ -68,6 +68,7 @@ const NewNote = () => {
     if (value.trim() !== "") {
       dispatch(createDiaryAction(value));
     }
+    console.log(value, "this is the value written");
     setValue("");
     setNote(!note);
   };

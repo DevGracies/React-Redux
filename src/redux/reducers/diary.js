@@ -14,6 +14,10 @@ import {
   GET_DIARY_REQUEST,
   GET_DIARY_SUCCESS,
   GET_USERS_RESET,
+  UPDATE_DIARY_ERROR,
+  UPDATE_DIARY_REQUEST,
+  UPDATE_DIARY_RESET,
+  UPDATE_DIARY_SUCCESS,
 } from "../constants";
 
 export const createDiaryReducer = (
@@ -33,7 +37,12 @@ export const createDiaryReducer = (
         ...state,
         diary: [
           ...state.diary,
-          { value: action.payload.value, id: Date.now() },
+          {
+            id: Date.now(),
+            name: "this is the diary state, the value isn't showing.. value/value",
+            value: action.payload.value,
+            values: action.payload,
+          },
         ],
       };
     case CREATE_DIARY_RESET:
@@ -59,12 +68,12 @@ export const updateDiaryReducer = (
   action
 ) => {
   switch (action.type) {
-    case GET_DIARY_REQUEST:
+    case UPDATE_DIARY_REQUEST:
       return {
         ...state,
         loading: true,
       };
-    case GET_DIARY_SUCCESS:
+    case UPDATE_DIARY_SUCCESS:
       return {
         success: true,
         ...state,
@@ -74,14 +83,14 @@ export const updateDiaryReducer = (
             : note
         ),
       };
-    case GET_USERS_RESET:
+    case UPDATE_DIARY_RESET:
       return {
         loading: false,
         success: false,
         task: null,
         errors: null,
       };
-    case GET_DIARY_ERROR:
+    case UPDATE_DIARY_ERROR:
       return {
         ...state,
         loading: false,
@@ -108,7 +117,10 @@ export const getDiaryReducer = (
         ...state,
         loading: false,
         success: true,
-        diary: [...state.diary, { value: action.payload.value }],
+        diary: [
+          ...state.diary,
+          { value: action.payload.value, id: Date.now() },
+        ],
       };
     case GET_DIARY_ERROR:
       return {
